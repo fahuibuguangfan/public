@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <title>原生AJAX请求</title>
+</head>
+<body>
+    <button id="btn">
+        ajax请求网络下载图片
+    </button>
+    <script>
+        let xhr = new XMLHttpRequest();
+        let url = 'http://localhost:8888/text.txt';
+            xhr.open("GET",url,true);
+            xhr.onreadystatechange=function(){
+                console.log(xhr.readyState);
+                //每次xhr.redayState 改变时会触发
+            }
+            xhr.send();
+            xhr.onload = function(){
+                if(xhr.status>=200&&xhr.status<300||xhr.status==304){
+                    if(xhr.readyState==4){
+                        //这里读取完成可从 xhr.respoions中读取请求回来的数据
+                        console.log(xhr.responseText)
+                    }
+                }
+            }
+            document.querySelector("#btn").onclick = function(){
+              //  xhr = new XMLHttpRequest();   //不重新创建对象也是可以的，当xhr调用open(),或者调用  时readystate会回到1
+                url = 'http://localhost:8888/img.png';
+                xhr.open('get',url,true);
+                xhr.responseType = "blob";  //二进制文件 要设置相应类型为"blob" 有了这个属性后 responseText还有XmL   就不存在了二进制对象就是 xhr.response
+                xhr.send();
+                xhr.onload = function(){
+                    if(xhr.status>=200&&xhr.status<300||xhr.status==304){
+                        if(xhr.readyState==4){
+                            //这里读取完成可从 xhr.respoions中读取请求回来的数据
+                            console.log(xhr.response)
+                            let imgs = document.createElement('img');
+                             let src = URL.createObjectURL(xhr.response);// Blob 对象
+                             console.log(src);
+                             imgs.src = src;
+                            document.body.appendChild(imgs);
+
+
+                        }
+                    }
+            }
+        }
+    </script>
+</body>
+</html>

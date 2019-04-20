@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <title>数据扁平化</title>
+</head>
+<body>
+    <script src="./data.js"></script>
+    <script>
+        function fun(data){
+           return data.reduce((a,b) => {
+               console.log(a,b)
+               return a.concat(
+                   b,
+                   Array.isArray(b.child)?fun(b.child):[]
+               )
+            },[])   //reduce方法第一个参数地方法，此方法常用两个参数，以一个市上一次return回的值，第二个是按数组下标递增的，因为上面用a.concat 是数组方法所以此处要给一个[],作为a的初始值
+        }
+        console.log(fun(datas));
+    </script>
+</body>
+</html>

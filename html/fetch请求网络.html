@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fetch请求网络</title>
+</head>
+<body>
+    <div id="div1">点击下载图片</div>
+    <button id="btn1">点击请求json数据</button>
+
+    <script>
+        window.onload = function(){
+            let url = 'http://localhost:8888/'
+            let div1 = document.querySelector('#div1')
+            let btn1 = document.querySelector('#btn1');
+            div1.onclick = async function(){
+                let img = await fetch(url+'img.png')
+                    img = await img.blob();
+                    console.log(img);   //Blob 二进制文件对象
+                    img = URL.createObjectURL(img);
+                let imgs =  document.createElement('img');
+                    imgs.src = img;
+                    this.appendChild(imgs);
+            }
+           //promise 写法
+          btn1.onclick = function(){
+              fetch(url+'json.json').then((data)=>{
+                  return data.json();
+              },(err)=>{
+                  console.log(err);
+              }).then(data=>{
+                  console.log(data);
+              })
+          }  
+            
+        }
+    </script>
+</body>
+</html>

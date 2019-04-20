@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <title>表单图片预览</title>
+</head>
+<body>
+    <form action="http://localhost:8888/json" enctype="multipart/form-data" method="POST">
+        第一张图片用fileReader方式展示 <input type="file" onchange="change1()"><br>   <!--onchange监听输入框值变化-->
+        <img width="300px"><br>  <!--用于预览功能-->
+        第二张图片用createObjectURL方式展示 <input type="file" onchange="change2()"><br>   <!--onchange监听输入框值变化-->
+        <img width="300px">  <!--用于预览功能-->
+    </form>
+    <script>
+        window.onload = function(){
+            let input1 = document.getElementsByTagName('input')[0];
+            let img1 = document.getElementsByTagName('img')[0];
+            let input2 = document.getElementsByTagName('input')[1];
+            let img2 = document.getElementsByTagName('img')[1];
+            change1 = function(){
+                let fileReader = new FileReader();  // 创建fileReader对象
+                fileReader.readAsDataURL(input1.files[0]);//fileReader对象有 readAsArrayBuffer readAsbBinarySrting 
+                fileReader.onload = function(){    //文件读取完触发这个事件，此时fileReader对象上result就是相应的值
+                    img1.src = this.result;
+                }
+            };
+            change2 = function(){
+               img2.src = URL.createObjectURL(input2.files[0])
+            }
+        }
+        
+    </script>
+  
+</body>
+</html>

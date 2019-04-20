@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <title>模拟冒泡排序</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+       
+        .parent {
+            display: flex;
+            background-color: aqua;
+           
+            height: 200px;
+           
+            flex-wrap: wrap-reverse;
+
+        }
+
+        .parent>div {
+            background-color: green;
+            width: 20px;
+            margin-left: 20px;
+        }
+        button{
+            margin: 200px;
+            line-height: 50px;
+            background-color: brown;
+            border-radius: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="delayed(0, arr.length, iii => {
+            delayed(0, arr.length - iii, j => {
+                if (arr[j] > arr[j + 1]) {
+                    let item = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = item;
+                }
+                rend(arr, j);
+            }, 10)
+        }, 10 * arr.length)">模拟冒泡排序</button>
+    <button onclick="(function(){
+        arr=createdArr(20)
+        rend(arr)})()">重新生成20个数字的随机数组</button>
+
+    <script type="text/javascript">
+        let parent = document.createElement('div');
+        parent.className = 'parent'
+        document.body.appendChild(parent);
+
+        //生成随机数数组
+        function createdArr(num) {
+            let arr = []
+            for (let i = 0; i < num; i++) {
+                arr.push(Math.floor(Math.random() * 200))
+            }
+            return arr;
+        }
+
+
+        //渲染
+        function rend(arr, i) {
+            parent.innerHTML = ''
+            arr.forEach(item => {
+                let div = document.createElement('div')
+                div.innerHTML = item
+                div.style.height = item + 'px'
+
+                parent.appendChild(div)
+            });
+            if (parent.childNodes[i]) {
+                parent.childNodes[i].style.backgroundColor = 'red'
+            }
+
+        }
+
+        let arr = createdArr(20);
+        rend(arr);
+
+
+        //模拟冒泡
+      
+
+        /**
+         * 模拟for循环的延时函数，不过嵌套调用时会有点问题，因为js 事件机制是队列，二for是栈
+         * @param {*事件起始索引} start 
+         * @param {*事件结束索引 } stop 
+         * @param {*回调函数} callback 
+         * @param {*延时时间} time 
+         */
+        function delayed(start, stop, callback, time) {
+            if (start > stop - 1) {
+                return;
+            } else {
+                setTimeout(() => {
+                    start++;
+                    delayed(start, stop, callback, time)
+                    callback(start - 1);
+                }, time);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

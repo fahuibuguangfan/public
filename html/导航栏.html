@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <title>导航栏</title>
+    <style>
+        #div {
+            margin: auto;
+            margin-top: 500px;
+            height: 200px;
+        }
+
+        .div1 {
+            width: 50px;
+            height: 10px;
+            margin: auto;
+            background-color: red;
+        }
+
+        .open {
+            width: 50px;
+            height: 10px;
+            margin: auto;
+            background-color:#ccc;
+        }
+        .open:after,.open:before{
+            content: '';
+            display:block;
+            width:50px;
+            height:10px;
+            background-color: blue;
+           
+            transition-duration: 1000ms;
+        }
+        .open:after{
+            margin-top: -10px;
+            background-color:green;
+            transform: rotate(-45deg);
+        }
+       
+        .open:before{
+            margin-top: 20px;
+            transform: rotate(45deg);
+        }
+        
+
+        .div1:after,.div1:before {
+            content: '';
+            display: block;
+            position: relative;
+            width: 50px;
+            height: 10px;
+            background-color: green;
+        }
+
+        .div1::after {
+            top: 10px;
+        }
+
+        .div1:before {
+            top: -20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        <div id='div1' class="div1"></div>
+    </div>
+    <script>
+        window.onload = function () {
+            let div1 = document.getElementById('div1');
+            div1.onclick = function () {
+                div1.className = div1.className === 'div1' ? 'open' : 'div1';
+
+                console.log(div1.className);
+            }
+        }
+    </script>
+</body>
+
+</html>

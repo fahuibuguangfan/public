@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <title>根据屏幕宽度适配导航栏</title>
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.hhh{
+    width:100%;
+    height:46px;
+    background-color: #333;
+}
+.hide{
+    text-align: center;
+    font-size: 20px;
+}
+
+/* 大于1120px*/
+@media screen and (min-width: 1120px) {
+    #mnav {
+        display: none;
+    }
+
+    #nav {
+        background-color: pink;
+        overflow: hidden;
+        zoom: 1;
+    }
+    ul {
+        float: right;
+        margin-right: 50px;
+    }
+    li {
+        float: left;
+        margin-top: 10px;
+        font-size: 20px;
+        margin-right: 50px;
+    }
+
+}
+
+
+/* 小于479px */
+@media only screen and (max-width: 479px) {
+    #nav {
+        display: none;
+    }
+    #mnav {
+        display: block;
+        z-index: 99999;
+        background: url() no-repeat left 10px top 13px #333;
+    }
+
+    #mnav .mmnav {
+        float: right;
+        margin-top: 15px;
+        margin-right: 15px;
+    }
+    
+    .mmnav {
+        display: inline-block;
+        position: relative;
+        width: 30px;
+        height: 5px;
+        background-color: #FFFFFF;
+    }
+    
+    .mmnav:before,
+    .mmnav:after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 5px;
+        position: absolute;
+        background: #FFFFFF;
+        transition-duration: 300ms;
+    }
+    
+    .mmnav:before {
+        margin-top: -10px;
+    }
+    
+    .mmnav:after {
+        margin-top: 10px;
+    }
+    
+    /* 展开后导航栏目 */
+    #mnav .open {
+        float: right;
+        margin-top: 15px;
+        margin-right: 15px;
+    }
+    #mnav .open {
+        background-color: #333
+    }
+    .open {
+        display: inline-block;
+        position: relative;
+        width: 30px;
+        height: 5px;
+        background-color: #FFFFFF;
+    }
+    
+    /* 使用背景色隐藏中间的红线 */
+    #mnav .open:before {
+        margin-top: 0;
+        transform: rotate(45deg);
+    }
+
+    #mnav .open:after {
+        margin-top: 0;
+        transform: rotate(-45deg);
+    }
+
+    #mnav .open:before,
+    #mnav .open:after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 5px;
+        position: absolute;
+        background: #FFFFFF;
+        transition-duration: 300ms;
+    }
+
+}
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div class="img"><img src="" alt="加载失败"></div>
+        <ul class="show">
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+        </ul>
+    </div>
+    <div id="mnav">
+      <div class="hhh">
+        <div class="mmnav"></div>
+      </div>
+            <ul class="hide">
+              <li><a href="http://www.baidu.com">www.baidu</a></li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+            </ul>
+          </div>
+  
+  <script>
+    window.onload = function ()
+    {
+      let oH2 = document.getElementsByClassName("mmnav")[0];
+      let oUl = document.getElementsByTagName("ul")[1];
+          oUl.style.display = 'none';
+      oH2.onclick = function ()
+      {
+        oUl.style.display = oUl.style.display === "block" ? "none" : "block";
+        oH2.className = oUl.style.display === "block" ? "open" : "mmnav";
+        console.log(oUl.style.display);
+      }
+    }
+    </script>
+</body>
+</html>

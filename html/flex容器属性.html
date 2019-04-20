@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <title>flex容器属性</title>
+    <style>
+        body {
+            margin-left: auto;
+            margin-right: auto;
+            width: 1000px;
+        }
+
+        #parent,
+        .parent {
+
+            border: 1px dashed black;
+            display: flex;
+        }
+
+        .flex-direction_row-reverse {
+            flex-direction: row-reverse
+        }
+
+        .flex-direction_column {
+            flex-direction: column
+        }
+
+        .flex-direction_column-reverse {
+            flex-direction: column-reverse
+        }
+
+
+        #parent>div,
+        .parent>div {
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+            line-height: 80px;
+            text-align: center;
+        }
+
+        .child1 {
+            background-color: red;
+        }
+
+        .child2 {
+            background-color: orange;
+        }
+
+        .child3 {
+            background-color: yellow;
+        }
+
+        .child4 {
+            background-color: green;
+        }
+
+        .child5 {
+            background-color: blue;
+        }
+
+        .child6 {
+            background-color: indigo;
+        }
+
+        .child7 {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>容器属性</h1><br>
+    <h4>6.个属性</h4>
+
+    <li>flex-direction</li>
+    <li>flex-wrap</li>
+    <li>flex-flow</li>
+    <li>justify-content</li>
+    <li>align-items</li>
+    <li>align-content</li>
+
+    <h2>1.flex-direcion属性</h2>
+    <div id="parent" class='parent'>
+        <div class='child1'>child1</div>
+        <div class='child2'>child2</div>
+        <div class='child3'>child3</div>
+        <div class='child4'>child4</div>
+        <div class='child5'>child5</div>
+        <div class='child6'>child6</div>
+        <div class='child7'>child7</div>
+
+    </div>
+    <form id="flex-direction">
+        <input type="radio" name="flexdirection" value="flex-direction_row" checked>row<br>
+        <input type="radio" name="flexdirection" value="flex-direction_row-reverse">row-reverse<br>
+        <input type="radio" name="flexdirection" value="flex-direction_column">column<br>
+        <input type="radio" name="flexdirection" value="flex-direction_column-reverse">column-reverse<br>
+    </form>
+
+
+
+
+    <h2>2.flex-wrap属性</h2>
+    <div id="flex-wrap" class='parent' style="width:400px;">
+        <div class='child1'>child1</div>
+        <div class='child2'>child2</div>
+        <div class='child3'>child3</div>
+        <div class='child4'>child4</div>
+        <div class='child5'>child5</div>
+        <div class='child6'>child6</div>
+        <div class='child7'>child7</div>
+    </div>
+    <h3>默认nowrap 容器装不下页不换行，wrap容器装不下换行，wrap-reverse换行并且第一行在下</h3>
+    <input type="text" id="input-flex-wrap">左边输入框输入右边三个值回车看效果nowrap | wrap | wrap-reverse
+
+
+    <h2>3.flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap</h2>
+
+    <h2>4.justify-content属性</h2>
+    <div id="justify-content" class='parent'>
+        <div class='child1'>child1</div>
+        <div class='child2'>child2</div>
+        <div class='child3'>child3</div>
+        <div class='child4'>child4</div>
+        <div class='child5'>child5</div>
+        <div class='child6'>child6</div>
+        <div class='child7'>child7</div>
+    </div>
+    <h3>justify-content属性定义了项目在主轴上的对齐方式 默认值（flex-start）主轴起点对齐 还有其他几个值见下面</h3>
+    <form id="input-justify-content">
+        <select name="select">
+            <option value="flex-start" selected>flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="center">center</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+        </select>
+    </form>
+
+
+
+
+    <h2>5.align-items属性</h2>
+    <div id="align-items" class='parent' style="height: auto">
+        <div class='child1'>child1</div>
+        <div class='child2' style="height: 20px;">child2</div>
+        <div class='child3' style="height: 30px;">child3</div>
+        <div class='child4' style="font-size:50px;">child4</div>
+        <div class='child5' style="height: 60px;">child5</div>
+        <div class='child6'>child6</div>
+        <div class='child7' style="height: 100px;">child7</div>
+    </div>
+    <h3>ailign-items属性定义了项目在交叉轴上的对齐方式 默认值（flex-start）交叉轴起点齐 还有其他几个值见下面</h3>
+    <form id="input-align-items">
+        <select name="select">
+            <option value="flex-start">flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="center">center</option>
+            <option value="baseline">baseline</option>
+            <option value="stretch" selected>stretch</option>
+        </select>
+    </form>
+
+    <h2>6.align-content</h2>
+
+    <h3>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</h3>
+
+    
+    <a href="./flex项目属性.html"><h1>后续项目属性</h1>flex项目属性</a>
+
+    <script>
+        let parent = document.getElementById('parent');
+        let flex_wrap = document.getElementById('flex-wrap');
+        let input_flex_wrap = document.getElementById('input-flex-wrap');
+
+
+        let justify_content = document.getElementById('justify-content');
+        let input_justify_content = document.getElementById('input-justify-content');
+
+        let align_itmes = document.getElementById('align-items');
+        let input_align_items = document.getElementById('input-align-items');
+
+
+        let flex_direction = document.getElementById('flex-direction');
+        flex_direction.onchange = function () {
+            console.log(flex_direction.flexdirection.value)
+            parent.className = flex_direction.flexdirection.value
+        }
+
+
+        input_flex_wrap.onchange = function () {
+            flex_wrap.style.flexWrap = input_flex_wrap.value;
+            console.log(input_flex_wrap.value)
+        }
+
+
+        input_justify_content.onchange = function () {
+            console.log(input_justify_content.select.value)
+            justify_content.style.justifyContent = input_justify_content.select.value;
+        }
+
+
+        input_align_items.onchange = function () {
+            console.log(input_align_items.select.value)
+            align_itmes.style.alignItems = input_align_items.select.value;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <title>递归遍历不同层级对象</title>
+
+</head>
+
+<body>
+    <script src="./data.js"></script>
+    <script>
+        window.onload = function () {
+            let ul = document.createElement('ul')
+            document.body.appendChild(ul)
+           
+            function fun(data, levels = 0) {
+                return data.map(item => {
+                    let str = `<li style="padding-left:${levels*30}px">${levels}${item.name}</li>`
+                    if (Array.isArray(item.child)) {
+                        str = str + fun(item.child, levels + 1); //这里用到闭包，只能用+1， 不能用++
+                    };
+                    return str
+                }).join('');
+            }
+            ul.innerHTML = fun(datas)
+        }
+    </script>
+</body>
+
+</html>
