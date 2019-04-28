@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+    <title>css3动画魔方</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+      
+        .div1{
+            margin: 400px auto;
+            width:360px;
+            height: 360px;
+            transform-style: preserve-3d;
+            transform: rotateZ(45deg);
+
+             animation: mytranform 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;  
+        }
+
+        .div1 > div{
+            position: absolute;
+           
+            
+            width: 360px;
+            height:360px;
+            animation-name: a;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-duration: 2000ms;
+            background:rgba(100, 100, 100, 0.5);
+            border-radius: 50px;
+        }
+        li{
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            font-size: 50px;
+            line-height: 100px;
+            text-align: center;   
+            border-radius:  30px;         
+        }
+        .div11 > ul > li{
+            background: coral;
+        }
+        .div12 > ul > li{
+            background:yellow;
+        }
+        .div13 > ul > li{
+            background:green;
+        }
+        .div14 > ul > li{
+            background:greenyellow;
+        }
+        .div15 > ul > li{
+            background:pink;
+        }
+        .div16 > ul > li{
+            background:plum;
+        }
+
+        .div11{
+            transform: rotateX(-90deg) translateZ(180px)
+        }
+        .div12{
+            transform: rotateX(90deg) translateZ(180px)
+        }
+        .div13{
+            transform: rotateY(-90deg) translateZ(180px)
+        }
+        .div14{
+            transform: rotateY(90deg) translateZ(180px)
+        }
+        .div15{
+            transform:  translateZ(-180px)
+        }
+        .div16{
+            transform:  translateZ(180px)
+        }
+
+
+        @keyframes mytranform{
+            0%{
+                transform: rotateX(0deg)rotateY(0deg)rotateZ(0deg); 
+            }
+            100%{
+                transform: rotateX(360deg)rotateY(360deg)rotateZ(360deg); 
+            }
+        }
+
+
+      
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+            <div class="div11">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                    </ul>
+                </div>
+                <div class="div12">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                    </ul>
+                </div>
+                <div class="div13">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                    </ul>
+                </div>
+                <div class="div14">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                    </ul>
+                </div>
+                <div class="div15">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                    </ul>
+                </div>
+                <div class="div16">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                    </ul>
+                </div>
+    </div>
+       
+    
+</body>
+
+</html>
